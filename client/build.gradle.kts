@@ -44,6 +44,15 @@ val mavenBucket = when(project.hasProperty("mavenBucket")) {
 }
 
 publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "io.titandata"
+            artifactId = "nop-remote-client"
+
+            from(components["java"])
+        }
+    }
+
     repositories {
         maven {
             name = "titan"
