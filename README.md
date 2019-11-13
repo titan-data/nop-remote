@@ -1,6 +1,10 @@
-# About this Project
+# Titan Nop (No Operation) Provider
 
-Describe the project for users.
+This is a very simpler Titan remote provider designed for automated testing.
+It's designed such that all pushes and pulls succeed. The only configuration it
+supports is a `delay` parameter that can be used to inject a delay in all
+operations, useful for making sure test calls execute before the operation
+is finished.
 
 ## Contributing
 
