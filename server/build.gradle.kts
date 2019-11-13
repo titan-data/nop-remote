@@ -47,7 +47,7 @@ publishing {
     publications {
         create<MavenPublication>("maven") {
             groupId = "io.titandata"
-            artifactId = "nop-remote-client"
+            artifactId = "nop-remote-server"
 
             from(components["java"])
         }
