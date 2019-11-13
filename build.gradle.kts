@@ -14,7 +14,12 @@ buildscript {
 }
 
 subprojects {
-    apply(plugin = "com.github.ben-manes.versions")
+    buildscript {
+        repositories {
+            mavenCentral()
+            maven("https://plugins.gradle.org/m2/")
+        }
+    }
 
     val ktlint by configurations.creating
 
