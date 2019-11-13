@@ -1,29 +1,23 @@
 package io.titandata.remote.nop.server
 
-import io.titandata.remote.RemoteClient
-import java.net.URI
+import io.titandata.remote.RemoteServer
 
-class NopRemoteServer : RemoteClient {
+class NopRemoteServer : RemoteServer {
     override fun getProvider(): String {
         return "nop"
     }
 
-    override fun parseUri(uri: URI, additionalProperties: Map<String, String>): Map<String, Any> {
-        if (uri.scheme != null && (uri.authority != null || uri.path != null)) {
-            throw IllegalArgumentException("Malformed remote identifier")
-        }
-        for (p in additionalProperties) {
-            throw IllegalArgumentException("Invalid property '${p.key}'")
-        }
-
+    /**
+     * The nop provider always returns success for any commit, and returns an empty set of properties.
+     */
+    override fun getCommit(remote: Map<String, Any>, parameters: Map<String, Any>, commitId: String): Map<String, Any>? {
         return emptyMap()
     }
 
-    override fun getParameters(remoteProperties: Map<String, Any>): Map<String, Any> {
-        return emptyMap()
-    }
-
-    override fun toUri(properties: Map<String, Any>): Pair<String, Map<String, String>> {
-        return Pair("nop", emptyMap())
+    /**
+     * The nop provider always returns an empty list of commits.
+     */
+    override fun listCommits(remote: Map<String, Any>, parameters: Map<String, Any>, tags: List<Pair<String, String?>>): List<Pair<String, Map<String, Any>>> {
+        return emptyList()
     }
 }
