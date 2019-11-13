@@ -1,15 +1,10 @@
-dependencies {
-    compile(kotlin("stdlib"))
-    compile("io.titandata:remote-sdk:0.0.1")
-}
-
 plugins {
     kotlin("jvm")
+    jacoco
     "com.github.ben-manes.versions"
     `maven-publish`
 
 }
-
 repositories {
     mavenCentral()
     jcenter()
@@ -18,6 +13,12 @@ repositories {
         name = "titan"
         url = uri("https://maven.titan-data.io")
     }
+}
+
+dependencies {
+    compile(kotlin("stdlib"))
+    compile("io.titandata:remote-sdk:0.0.1")
+    testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")
 }
 
 // Jar configuration
@@ -53,3 +54,10 @@ publishing {
         }
     }
 }
+
+// Test configuration
+
+tasks.test {
+    useJUnitPlatform()
+}
+
