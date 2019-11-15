@@ -17,7 +17,7 @@ repositories {
 
 dependencies {
     compile(kotlin("stdlib"))
-    compile("io.titandata:remote-sdk:0.0.4")
+    compile("io.titandata:remote-sdk:0.0.7")
     testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")
 }
 
