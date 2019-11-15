@@ -6,15 +6,9 @@ import io.kotlintest.shouldBe
 import io.kotlintest.shouldNotBe
 import io.kotlintest.shouldThrow
 import io.kotlintest.specs.StringSpec
-import io.mockk.Runs
 import io.mockk.clearAllMocks
-import io.mockk.every
-import io.mockk.just
-import io.mockk.mockkStatic
-import io.mockk.verify
 import io.titandata.remote.RemoteOperation
 import io.titandata.remote.RemoteOperationType
-import io.titandata.remote.RemoteProgress
 
 class NopRemoteServerTest : StringSpec() {
     private val client = NopRemoteServer()
