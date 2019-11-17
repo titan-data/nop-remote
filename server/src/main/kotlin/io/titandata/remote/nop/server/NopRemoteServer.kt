@@ -1,3 +1,7 @@
+/*
+ * Copyright The Titan Project Contributors.
+ */
+
 package io.titandata.remote.nop.server
 
 import io.titandata.remote.RemoteOperation
@@ -70,15 +74,15 @@ class NopRemoteServer : RemoteServer {
         }
     }
 
-    /**
-     * There is nothing to do for nop operations
-     */
     override fun endOperation(operation: RemoteOperation, isSuccessful: Boolean) {
+        // Nothing to do
     }
 
-    /**
-     * There is nothing to do for nop operations
-     */
     override fun syncVolume(operation: RemoteOperation, volumeName: String, volumeDescription: String, volumePath: String, scratchPath: String) {
+        // Nothing to do
+    }
+
+    override fun pushMetadata(operation: RemoteOperation, commit: Map<String, Any>, isUpdate: Boolean) {
+        // Nothing to do
     }
 }

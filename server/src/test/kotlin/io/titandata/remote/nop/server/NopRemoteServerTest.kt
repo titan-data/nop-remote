@@ -1,3 +1,7 @@
+/*
+ * Copyright The Titan Project Contributors.
+ */
+
 package io.titandata.remote.nop.server
 
 import io.kotlintest.TestCase
@@ -81,6 +85,10 @@ class NopRemoteServerTest : StringSpec() {
 
         "start operation succeeds" {
             client.startOperation(op)
+        }
+
+        "push metadata does nothing" {
+            client.pushMetadata(op, emptyMap(), true)
         }
     }
 }

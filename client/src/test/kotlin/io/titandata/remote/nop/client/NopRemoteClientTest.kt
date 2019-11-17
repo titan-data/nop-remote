@@ -1,3 +1,7 @@
+/*
+ * Copyright The Titan Project Contributors.
+ */
+
 package io.titandata.remote.nop.client
 
 import io.kotlintest.shouldBe
