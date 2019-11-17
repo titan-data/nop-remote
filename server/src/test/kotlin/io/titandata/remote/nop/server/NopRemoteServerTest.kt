@@ -20,6 +20,7 @@ class NopRemoteServerTest : StringSpec() {
     private val op = RemoteOperation(
             operationId = "op",
             commitId = "commit",
+            commit = null,
             remote = emptyMap(),
             parameters = emptyMap(),
             type = RemoteOperationType.PUSH,
