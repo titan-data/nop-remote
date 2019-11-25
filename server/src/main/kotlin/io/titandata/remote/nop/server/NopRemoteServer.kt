@@ -64,7 +64,7 @@ class NopRemoteServer : RemoteServer {
      * There is nothing to do for nop operations, but we enable the ability to inject a delay into the process for the
      * purposes of controlling timing for tests.
      */
-    override fun startOperation(operation: RemoteOperation) {
+    override fun syncDataStart(operation: RemoteOperation) {
         val props = operation.parameters
         if (props.containsKey("delay")) {
             val delay = props.get("delay").toString().toDouble().toInt()
@@ -74,11 +74,11 @@ class NopRemoteServer : RemoteServer {
         }
     }
 
-    override fun endOperation(operation: RemoteOperation, isSuccessful: Boolean) {
+    override fun syncDataEnd(operation: RemoteOperation, operationData: Any?, isSuccessful: Boolean) {
         // Nothing to do
     }
 
-    override fun syncVolume(operation: RemoteOperation, volumeName: String, volumeDescription: String, volumePath: String, scratchPath: String) {
+    override fun syncDataVolume(operation: RemoteOperation, operationData: Any?, volumeName: String, volumeDescription: String, volumePath: String, scratchPath: String) {
         // Nothing to do
     }
 

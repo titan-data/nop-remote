@@ -24,7 +24,6 @@ class NopRemoteServerTest : StringSpec() {
             remote = emptyMap(),
             parameters = emptyMap(),
             type = RemoteOperationType.PUSH,
-            data = null,
             updateProgress = { _, _, _ -> }
     )
 
@@ -76,16 +75,16 @@ class NopRemoteServerTest : StringSpec() {
             commits.size shouldBe 0
         }
 
-        "end operation does nothing" {
-            client.endOperation(op, true)
+        "sync data end does nothing" {
+            client.syncDataEnd(op, null, true)
         }
 
-        "sync volume does nothing" {
-            client.syncVolume(op, "volume", "volume", "/path", "/path")
+        "sync data volume does nothing" {
+            client.syncDataVolume(op, null, "volume", "volume", "/path", "/path")
         }
 
-        "start operation succeeds" {
-            client.startOperation(op)
+        "sync data start succeeds" {
+            client.syncDataStart(op)
         }
 
         "push metadata does nothing" {
