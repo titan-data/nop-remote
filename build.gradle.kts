@@ -19,6 +19,22 @@ buildscript {
     }
 }
 
+// Configuration for dependencyUpdates task to ignore release candidates
+tasks.withType<DependencyUpdatesTask>().configureEach {
+    resolutionStrategy {
+        componentSelection {
+            all {
+                val rejected = listOf("alpha", "beta", "rc", "cr", "m", "preview", "b", "ea", "eap").any { qualifier ->
+                    candidate.version.matches(Regex("(?i).*[.-]$qualifier[.\\d-+]*"))
+                }
+                if (rejected) {
+                    reject("Release candidate")
+                }
+            }
+        }
+    }
+}
+
 subprojects {
     buildscript {
         repositories {
@@ -38,22 +54,6 @@ subprojects {
         kotlinOptions {
             jvmTarget = "1.8"
             allWarningsAsErrors = true
-        }
-    }
-
-    // Configuration for dependencyUpdates task to ignore release candidates
-    tasks.withType<DependencyUpdatesTask>().configureEach {
-        resolutionStrategy {
-            componentSelection {
-            	all {
-            	    val rejected = listOf("alpha", "beta", "rc", "cr", "m", "preview", "b", "ea", "eap").any { qualifier ->
-                		candidate.version.matches(Regex("(?i).*[.-]$qualifier[.\\d-+]*"))
-            	    }
-            	    if (rejected) {
-                		reject("Release candidate")
-            	    }
-            	}
-            }
         }
     }
 
